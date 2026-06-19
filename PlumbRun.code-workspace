@@ -1,0 +1,90 @@
+{
+  "folders": [
+    { "name": "PlumbRun App", "path": "." },
+    { "name": "PlumbRun API", "path": "./backend" }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "emmet.includeLanguages": { "javascript": "javascriptreact" },
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.expo": true
+    },
+    "search.exclude": {
+      "**/node_modules": true
+    },
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#0D1B2A",
+      "titleBar.activeBackground": "#0D1B2A",
+      "titleBar.activeForeground": "#FFFFFF"
+    },
+    "workbench.editor.tabSizing": "shrink"
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "ms-vscode.vscode-typescript-next",
+      "dsznajder.es7-react-js-snippets",
+      "msjsdiag.vscode-react-native",
+      "expo.vscode-expo-tools",
+      "bradlc.vscode-tailwindcss",
+      "eamodio.gitlens",
+      "github.copilot",
+      "formulahendry.auto-rename-tag",
+      "streetsidesoftware.code-spell-checker",
+      "christian-kohler.path-intellisense",
+      "ms-azuretools.vscode-docker"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Backend API",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/backend/server.js",
+        "envFile": "${workspaceFolder}/.env",
+        "console": "integratedTerminal",
+        "restart": true
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start All (App + API)",
+        "type": "shell",
+        "command": "./start-all.sh",
+        "group": "build",
+        "presentation": { "panel": "shared" }
+      },
+      {
+        "label": "Start Expo App",
+        "type": "shell",
+        "command": "npx expo start",
+        "group": "build",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Start Backend API",
+        "type": "shell",
+        "command": "cd backend && npm run dev",
+        "group": "build",
+        "presentation": { "panel": "new" }
+      },
+      {
+        "label": "Seed Test Data",
+        "type": "shell",
+        "command": "node seed-test-data.js",
+        "group": "test"
+      }
+    ]
+  }
+}
